@@ -4,6 +4,13 @@ const TestimonialsSection: React.FC = () => {
   return (
     <section className="py-24 overflow-hidden" id="depoimentos">
       <div className="max-w-[1200px] mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <TrustItem icon="spa" text="Livre de Parabenos" />
+          <TrustItem icon="cruelty_free" text="Não Testado em Animais" />
+          <TrustItem icon="science" text="Fórmula Profissional" />
+          <TrustItem icon="lock" text="Envio Seguro" />
+        </div>
+
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-xl">
             <h2 className="text-3xl md:text-4xl font-black text-forest dark:text-white">Quem usa, aprova</h2>
@@ -19,18 +26,21 @@ const TestimonialsSection: React.FC = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <TestimonialCard
+          <WhatsappTestimonialCard
             name="Mariana Silva"
-            text="O ativador de 1L é um salvador de vidas! Meus cachos nunca ficaram tão definidos por tanto tempo, e o melhor é que o produto dura muito. Vale cada centavo!"
+            time="10:42"
+            text="Amiga, o ativador de 1L é um salvador de vidas! Meus cachos nunca ficaram tão definidos por tanto tempo, e o melhor é que o produto dura muito. Vale cada centavo! 😍"
           />
-          <TestimonialCard
+          <WhatsappTestimonialCard
             name="Ana Beatriz"
-            text="Estou em transição capilar e esse kit foi a única coisa que ajudou a esconder as duas texturas sem pesar o cabelo. O cheiro de coco é maravilhoso."
+            time="14:15"
+            text="Estou em transição capilar e esse kit foi a única coisa que ajudou a esconder as duas texturas sem pesar o cabelo. O cheiro de coco é maravilhoso. Amei demais!"
             featured
           />
-          <TestimonialCard
+          <WhatsappTestimonialCard
             name="Juliana Costa"
-            text="O dia seguinte (day-after) é real! Acordo, balanço o cabelo e ele está pronto. Recomendo pra todas as minhas amigas cacheadas."
+            time="09:30"
+            text="O dia seguinte (day-after) é real! Acordo, balanço o cabelo e ele está pronto. Recomendo pra todas as minhas amigas cacheadas. Chegou super rápido tb!"
           />
         </div>
         <div className="mt-16 text-center">
@@ -48,22 +58,32 @@ const TestimonialsSection: React.FC = () => {
   );
 };
 
+const TrustItem: React.FC<{ icon: string; text: string }> = ({ icon, text }) => (
+  <div className="flex flex-col items-center justify-center text-center gap-2">
+    <span className="material-symbols-outlined text-4xl text-primary">{icon}</span>
+    <span className="text-sm font-bold text-chocolate dark:text-white">{text}</span>
+  </div>
+)
+
 interface TestimonialCardProps {
   name: string;
+  time: string;
   text: string;
   featured?: boolean;
 }
 
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, text, featured }) => (
-  <div className={`bg-white dark:bg-background-dark p-8 rounded-2xl shadow-lg border border-chocolate/5 dark:border-white/10 ${featured ? 'md:scale-105 z-10' : ''}`}>
-    <div className="flex gap-4 items-center mb-6">
-      <div className="size-12 rounded-full bg-gray-200 dark:bg-gray-700"></div>
-      <div>
-        <p className="font-bold dark:text-white">{name}</p>
-        <p className="text-xs opacity-50 dark:text-white/50">Cliente Verificada</p>
+const WhatsappTestimonialCard: React.FC<TestimonialCardProps> = ({ name, time, text, featured }) => (
+  <div className={`bg-[#E5DDD5] dark:bg-[#202c33] p-4 rounded-2xl shadow-lg border border-chocolate/5 relative ${featured ? 'md:scale-105 z-10 shadow-2xl' : ''}`}>
+    <div className="bg-white dark:bg-[#111b21] rounded-lg p-4 shadow-sm relative after:content-[''] after:absolute after:top-0 after:-left-2 after:w-0 after:h-0 after:border-[10px] after:border-t-transparent after:border-r-white dark:after:border-r-[#111b21] after:border-b-transparent">
+      <div className="flex justify-between items-baseline mb-1">
+        <span className="font-bold text-[#E55C18] dark:text-[#E55C18] text-sm push-name">{name}</span>
+      </div>
+      <p className="text-sm text-[#111b21] dark:text-white/90 leading-relaxed mb-2">{text}</p>
+      <div className="flex justify-end items-center gap-1">
+        <span className="text-[10px] text-gray-400">{time}</span>
+        <span className="material-symbols-outlined text-[14px] text-[#53bdeb]">done_all</span>
       </div>
     </div>
-    <p className="italic text-chocolate/80 dark:text-white/80 leading-relaxed">"{text}"</p>
   </div>
 );
 

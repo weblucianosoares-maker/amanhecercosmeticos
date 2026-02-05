@@ -2,8 +2,8 @@ import React from 'react';
 
 const FooterCTA: React.FC = () => {
   return (
-    <section className="py-24 bg-forest text-white">
-      <div className="max-w-[1000px] mx-auto px-6 bg-white/5 rounded-[40px] border border-white/10 p-8 md:p-16 relative overflow-hidden text-center">
+    <section className="py-24 bg-forest text-white relative">
+      <div className="max-w-[1000px] mx-auto px-6 bg-white/5 rounded-[40px] border border-white/10 p-8 md:p-16 relative overflow-hidden text-center z-10">
         <div className="absolute top-0 left-0 w-full h-2 bg-primary/20">
           <div className="h-full bg-primary w-4/5"></div>
         </div>
@@ -31,15 +31,31 @@ const FooterCTA: React.FC = () => {
           href="https://www.amanhecerprofessional.com.br/produtos/kit-nutricao-coco-shampoo-condicionador-e-mascara-300ml-e-ativador-de-cachos-1l/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full md:w-auto bg-primary text-white px-16 py-6 rounded-2xl text-xl font-extrabold shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all inline-block"
+          className="w-full md:w-auto bg-[#ff6b00] text-white px-16 py-6 rounded-2xl text-xl font-extrabold shadow-2xl shadow-orange-500/40 hover:scale-105 active:scale-95 transition-all inline-block hover:brightness-110"
         >
-          QUERO MEU KIT COM 23% OFF
+          COMPRAR AGORA (R$ 51 OFF)
         </a>
         <div className="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale contrast-200">
           <span className="material-symbols-outlined text-4xl">security</span>
           <span className="material-symbols-outlined text-4xl">local_shipping</span>
           <span className="material-symbols-outlined text-4xl">verified_user</span>
         </div>
+      </div>
+
+      {/* Sticky Mobile Button */}
+      <div className="fixed bottom-0 left-0 w-full p-4 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] md:hidden z-50 flex items-center justify-between gap-4">
+        <div className="flex flex-col">
+          <span className="text-xs font-bold text-gray-500 line-through">R$ 219,00</span>
+          <span className="text-xl font-black text-forest">R$ 169,00</span>
+        </div>
+        <a
+          href="https://www.amanhecerprofessional.com.br/produtos/kit-nutricao-coco-shampoo-condicionador-e-mascara-300ml-e-ativador-de-cachos-1l/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 bg-[#ff6b00] text-center text-white font-bold py-3 rounded-xl shadow-lg shadow-orange-500/30 active:scale-95 transition-transform"
+        >
+          COMPRAR AGORA
+        </a>
       </div>
     </section>
   );
